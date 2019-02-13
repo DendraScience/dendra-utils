@@ -1,15 +1,8 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
 /**
  * Basic interval class; adapted from:
  * http://docs.sympy.org/latest/modules/sets.html
  */
-class Interval {
+export default class Interval {
   static empty() {
     return new Interval(0, 0, true, true);
   }
@@ -53,5 +46,3 @@ class Interval {
   }
 
 }
-
-exports.default = Interval;

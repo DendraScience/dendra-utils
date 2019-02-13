@@ -8,28 +8,21 @@ describe('Module', function () {
   it('should import', function () {
     utils = require('../../dist')
 
+    expect(utils).to.have.property('airDensity')
+    expect(utils).to.have.property('airPressure')
     expect(utils).to.have.property('Interval')
+    expect(utils).to.have.property('treeMap')
   })
 
   it('should compute airDensity', function () {
-    const fn = require('../../dist/airDensity')
-
-    expect(utils).to.have.property('airDensity', fn)
-    expect(fn(1000)).to.equal(1.1116425776886818)
+    expect(utils.airDensity(1000)).to.equal(1.1116425776886818)
   })
 
   it('should compute airPressure', function () {
-    const fn = require('../../dist/airPressure')
-
-    expect(utils).to.have.property('airPressure', fn)
-    expect(fn(1000)).to.equal(89874.57050221058)
+    expect(utils.airPressure(1000)).to.equal(89874.57050221058)
   })
 
   it('should perform treeMap', function () {
-    const fn = require('../../dist/treeMap')
-
-    expect(utils).to.have.property('treeMap', fn)
-
     const tree1 = {
       aNumber: 1,
       aString: 'string1',
@@ -45,7 +38,7 @@ describe('Module', function () {
         aDate: new Date(3000)
       }
     }
-    const tree2 = fn(tree1, (obj) => {
+    const tree2 = utils.treeMap(tree1, (obj) => {
       // Map dates to numbers
       if (obj instanceof Date) return obj.getTime()
       return obj
@@ -69,11 +62,7 @@ describe('Module', function () {
   })
 
   it('should create Interval', function () {
-    const Cls = require('../../dist/Interval')
-
-    expect(utils).to.have.property('Interval', Cls)
-
-    const inst = new Cls(0, -1)
+    const inst = new utils.Interval(0, -1)
     expect(inst).to.have.property('empty', true)
   })
 })

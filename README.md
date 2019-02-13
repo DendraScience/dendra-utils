@@ -5,7 +5,7 @@ Defines common utility classes and functions for client and server-side use.
 
 ## Instructions
 
-1. Be sure you have Node version 6.11.x. If you’re using nvm, you may need to `nvm use 6.11`.
+1. Be sure you have Node version 10.15.x. If you’re using nvm, you may need to `nvm use 10.15`.
 
 2. Clone this repo.
 

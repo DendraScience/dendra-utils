@@ -1,17 +1,21 @@
 {
   "name": "@dendra-science/utils",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Utility classes and functions.",
   "license": "BSD-2-Clause-FreeBSD",
   "author": "J. Scott Smith <scott@newleafsolutionsinc.com>",
   "main": "dist/index.js",
+  "browser": "lib/index.js",
+  "module": "module/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/DendraScience/dendra-utils.git"
   },
   "scripts": {
     "babel": "babel src -d dist",
-    "build": "npm run lint && npm run clean && npm run babel",
+    "babel-browser": "BABEL_ENV=browser babel src -d lib",
+    "babel-module": "BABEL_ENV=module babel src -d module",
+    "build": "npm run lint && npm run clean && npm run babel && npm run babel-browser && npm run babel-module",
     "clean": "rm -rf dist/*",
     "lint": "eslint src",
     "lint-test": "eslint test",
@@ -20,23 +24,20 @@
     "test:watch": "chokidar --initial 'src/**/*.js' 'test/**/*.js' -c 'npm run test:build'"
   },
   "engines": {
-    "node": ">=6.11.0"
+    "node": ">=10.15.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-es2015": "^6.24.1",
-    "chai": "^4.0.2",
-    "eslint": "^4.1.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^5.1.0",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "mocha": "^3.4.2"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "chai": "^4.2.0",
+    "eslint": "^5.13.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^5.2.0"
   },
-  "optionalDependencies": {
-    "fsevents": "^1.0.0"
-  }
+  "optionalDependencies": {}
 }

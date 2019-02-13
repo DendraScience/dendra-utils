@@ -1,4 +1,43 @@
 {
-  "plugins": ["add-module-exports"],
-  "presets": ["es2015"]
+  "env": {
+    "browser": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": false,
+            "targets": {
+              "esmodules": true
+            }
+          }
+        ]
+      ]
+    },
+    "development": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    },
+    "module": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": false,
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "sourceMaps": true
 }
