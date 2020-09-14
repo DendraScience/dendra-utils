@@ -8,6 +8,7 @@ export default class Interval {
   }
 
   constructor(start, end, leftOpen = false, rightOpen = false) {
+    ;
     [this.start, this.end, this.leftOpen, this.rightOpen] = [start, end, leftOpen, rightOpen];
   }
 

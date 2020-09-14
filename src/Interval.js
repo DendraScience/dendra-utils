@@ -3,21 +3,30 @@
  * http://docs.sympy.org/latest/modules/sets.html
  */
 export default class Interval {
-  static empty () {
+  static empty() {
     return new Interval(0, 0, true, true)
   }
 
-  constructor (start, end, leftOpen = false, rightOpen = false) {
-    [this.start, this.end, this.leftOpen, this.rightOpen] = [start, end, leftOpen, rightOpen]
+  constructor(start, end, leftOpen = false, rightOpen = false) {
+    ;[this.start, this.end, this.leftOpen, this.rightOpen] = [
+      start,
+      end,
+      leftOpen,
+      rightOpen
+    ]
   }
 
-  get empty () {
-    return (this.end < this.start) || ((this.end - this.start === 0) && (this.leftOpen || this.rightOpen))
+  get empty() {
+    return (
+      this.end < this.start ||
+      (this.end - this.start === 0 && (this.leftOpen || this.rightOpen))
+    )
   }
 
-  intersect (other) {
+  intersect(other) {
     if (!(other instanceof Interval)) return
-    if ((this.start > other.end) || (this.end < other.start)) return Interval.empty()
+    if (this.start > other.end || this.end < other.start)
+      return Interval.empty()
 
     let start, end, leftOpen, rightOpen
 

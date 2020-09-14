@@ -46,26 +46,20 @@ function calc(wat, h) {
   let pb; // Standard pressure
 
   let tb; // Standard temperature
-
-  let c; // interim value (standard density or pressure)
-
-  let m; // interim value (mantissa of result)
-
-  let e; // interim value (exponent of result)
   // Set constants based on what 'layer' (b) of the atmosphere we're in
 
   if (h < 11000) {
     // b = 0
     hb = 0;
     lb = -0.0065;
-    pb = 101325.00;
-    rb = 1.2250;
+    pb = 101325.0;
+    rb = 1.225;
     tb = 288.15;
   } else if (h < 20000) {
     // b = 1
     hb = 11000;
     lb = 0.0;
-    pb = 22632.10;
+    pb = 22632.1;
     rb = 0.36391;
     tb = 216.65;
   } else if (h < 32000) {
@@ -103,9 +97,13 @@ function calc(wat, h) {
     pb = 3.96;
     rb = 0.000064;
     tb = 214.65;
-  }
+  } // interim value (standard density or pressure)
 
-  c = wat === PRESSURE ? pb : rb;
+
+  const c = wat === PRESSURE ? pb : rb;
+  let m; // interim value (mantissa of result)
+
+  let e; // interim value (exponent of result)
 
   if (lb === 0) {
     m = Math.E;

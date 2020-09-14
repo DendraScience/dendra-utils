@@ -27,18 +27,14 @@ describe('Module', function () {
       aNumber: 1,
       aString: 'string1',
       aDate: new Date(1000),
-      anArray: [
-        2,
-        'string2',
-        new Date(2000)
-      ],
+      anArray: [2, 'string2', new Date(2000)],
       anObject: {
         aNumber: 3,
         aString: 'string3',
         aDate: new Date(3000)
       }
     }
-    const tree2 = utils.treeMap(tree1, (obj) => {
+    const tree2 = utils.treeMap(tree1, obj => {
       // Map dates to numbers
       if (obj instanceof Date) return obj.getTime()
       return obj
@@ -47,16 +43,12 @@ describe('Module', function () {
     expect(tree2).to.deep.equal({
       aNumber: 1,
       aString: 'string1',
-      aDate: (new Date(1000)).getTime(),
-      anArray: [
-        2,
-        'string2',
-        (new Date(2000)).getTime()
-      ],
+      aDate: new Date(1000).getTime(),
+      anArray: [2, 'string2', new Date(2000).getTime()],
       anObject: {
         aNumber: 3,
         aString: 'string3',
-        aDate: (new Date(3000)).getTime()
+        aDate: new Date(3000).getTime()
       }
     })
   })
